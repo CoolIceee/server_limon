@@ -11,4 +11,12 @@ module.exports.categoryController = {
       res.json(e, 'd')
     }
   },
+  getCategory: async (req, res) => {
+    try {
+      const data = await Category.find()
+      res.json(data)
+    } catch (e) {
+      res.json(e, 'd')
+    }
+  },
 }
