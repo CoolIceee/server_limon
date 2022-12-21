@@ -16,7 +16,6 @@ module.exports.subcategoriesController = {
     try {
       const data = await Subcategories.find({
         category: req.params.category,
-        floorCategory: req.params.floorCategory,
       })
       res.json(data)
     } catch (e) {
