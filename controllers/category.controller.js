@@ -8,7 +8,7 @@ module.exports.categoryController = {
       })
       res.json('Категория добвалена')
     } catch (e) {
-      res.json(e, 'd')
+      res.json(e)
     }
   },
   getCategory: async (req, res) => {
@@ -16,7 +16,15 @@ module.exports.categoryController = {
       const data = await Category.find()
       res.json(data)
     } catch (e) {
-      res.json(e, 'd')
+      res.json(e)
+    }
+  },
+  getOneCategory: async (req, res) => {
+    try {
+      const data = await Category.findById(req.params.id)
+      res.json(data)
+    } catch (e) {
+      res.json(e)
     }
   },
 }

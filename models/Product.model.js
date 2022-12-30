@@ -9,8 +9,8 @@ const productSchema = mongoose.Schema({
   },
   typeProduct: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Subcategories',
     required: true,
+    ref: 'Subcategories'
   },
   brand: { type: mongoose.Schema.Types.ObjectId, required: true },
   photo: [{ type: String }],

@@ -33,7 +33,18 @@ module.exports.productController = {
   },
   getProduct: async (_, res) => {
     try {
-      const data = await Product.find()
+      const data = await Product.find().populate('typeProduct')
+      res.json(data)
+    } catch (error) {
+      res.json(error)
+    }
+  },
+  getOneCategoryProduct: async (req, res) => {
+    try {
+      const data = await Product.find({
+        subcategories: req.params.id,
+        
+      })
       res.json(data)
     } catch (error) {
       res.json(error)

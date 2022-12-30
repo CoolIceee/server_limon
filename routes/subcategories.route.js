@@ -5,5 +5,7 @@ const {
 } = require('../controllers/subcategories.controller')
 
 router.post('', subcategoriesController.addSubcategories)
-router.get('/sub/:category', subcategoriesController.getCategory)
+router.get('/sub/:id', subcategoriesController.getCategory)
+router.get('/sub', subcategoriesController.getOneCategory)
+
 module.exports = router
