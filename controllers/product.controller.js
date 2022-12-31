@@ -43,7 +43,16 @@ module.exports.productController = {
     try {
       const data = await Product.find({
         subcategories: req.params.id,
-        
+      })
+      res.json(data)
+    } catch (error) {
+      res.json(error)
+    }
+  },
+  getOneSubcategoryProduct: async (req, res) => {
+    try {
+      const data = await Product.find({
+        typeProduct: req.params.id,
       })
       res.json(data)
     } catch (error) {
