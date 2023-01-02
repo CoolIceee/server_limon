@@ -3,7 +3,7 @@ const config = require('config')
 module.exports = async (req, res, next) => {
   const { authorization } = req.headers
   if (!authorization) {
-    res.status(401).json({ error: 'Вы не авторизованны' })
+    return res.status(401).json({ error: 'Вы не авторизованны' })
   }
   const [type, token] = authorization.split(' ')
 

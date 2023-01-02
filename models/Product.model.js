@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 
 const productSchema = mongoose.Schema({
   name: { type: String, required: true },
+  people: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Users' }],
   subcategories: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Category',
@@ -10,7 +11,7 @@ const productSchema = mongoose.Schema({
   typeProduct: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    ref: 'Subcategories'
+    ref: 'Subcategories',
   },
   brand: { type: mongoose.Schema.Types.ObjectId, required: true },
   photo: [{ type: String }],

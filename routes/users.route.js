@@ -12,5 +12,10 @@ router.post(
 router.post('/login', userController.loginUser)
 router.get('', userController.getUsers)
 router.get('/my/data', authMiddleware, userController.getMyData)
+router.post(
+  '/add/product/basket/:id',
+  authMiddleware,
+  userController.addShoppingBasket
+)
 
 module.exports = router

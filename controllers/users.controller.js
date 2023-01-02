@@ -1,4 +1,5 @@
 const Users = require('../models/Users.model')
+const Product = require('../models/Product.model')
 const { validationResult } = require('express-validator')
 const bcrypt = require('bcrypt')
 const config = require('config')
@@ -97,10 +98,21 @@ module.exports.userController = {
   },
   getMyData: async (req, res) => {
     try {
-      const data = await Users.findById(req.user.id).populate('friends')
-
-      const array = [data]
-      res.json(array)
+      const data = await Users.findById(req.user.id).populate('basket')
+      res.json([data])
+    } catch {
+      res.status(404).json({ error: 'что-то пошло не так, повторите попытку!' })
+    }
+  },
+  addShoppingBasket: async (req, res) => {
+    try {
+      await Users.findByIdAndUpdate(req.user.id, {
+        $push: { basket: req.params.id },
+      })
+      await Product.findByIdAndUpdate(req.params.id, {
+        $push: { people: req.user.id },
+      })
+      res.json('good')
     } catch {
       res.status(404).json({ error: 'что-то пошло не так, повторите попытку!' })
     }
