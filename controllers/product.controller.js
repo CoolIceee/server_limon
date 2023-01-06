@@ -4,9 +4,12 @@ module.exports.productController = {
     try {
       const {
         name,
-        subcategories,
+        itemName,
+        // brand,
+        people,
+        gender,
         typeProduct,
-        brand,
+        subcategories,
         photo,
         dimensions,
         description,
@@ -16,9 +19,12 @@ module.exports.productController = {
       } = req.body
       await Product.create({
         name,
-        subcategories,
+        itemName,
+        // brand,
+        people,
+        gender,
         typeProduct,
-        brand,
+        subcategories,
         photo,
         dimensions,
         description,

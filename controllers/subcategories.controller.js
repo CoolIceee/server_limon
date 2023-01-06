@@ -3,14 +3,17 @@ const Category = require('../models/Category.model')
 module.exports.subcategoriesController = {
   addSubcategories: async (req, res) => {
     try {
-      const { name, category, floorCategory } = req.body
+      const { name, category, genderСategories, floorCategory } = req.body
       Subcategories.create({
         name,
+        genderСategories,
         category,
         floorCategory,
       })
       res.json('Подкатегория добавлена')
-    } catch {}
+    } catch {
+      res.json(e)
+    }
   },
   getCategory: async (req, res) => {
     try {
