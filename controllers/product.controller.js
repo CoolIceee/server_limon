@@ -16,7 +16,7 @@ module.exports.productController = {
         price,
         discountPrice,
         quantity,
-      } = req.body
+      } = req.body;
       await Product.create({
         name,
         itemName,
@@ -31,38 +31,38 @@ module.exports.productController = {
         price,
         discountPrice,
         quantity,
-      })
-      res.json('Продукт добавлен')
+      });
+      res.json("Продукт добавлен");
     } catch (error) {
-      res.json(error)
+      res.json(error);
     }
   },
   getProduct: async (_, res) => {
     try {
-      const data = await Product.find().populate('typeProduct')
-      res.json(data)
+      const data = await Product.find().populate("typeProduct");
+      res.json(data);
     } catch (error) {
-      res.json(error)
+      res.json(error);
     }
   },
-  getOneCategoryProduct: async (req, res) => {
+  getOneGenderProduct: async (req, res) => {
     try {
       const data = await Product.find({
-        subcategories: req.params.id,
-      })
-      res.json(data)
+        gender: req.params.id,
+      });
+      res.json(data);
     } catch (error) {
-      res.json(error)
+      res.json(error);
     }
   },
   getOneSubcategoryProduct: async (req, res) => {
     try {
       const data = await Product.find({
         typeProduct: req.params.id,
-      })
-      res.json(data)
+      });
+      res.json(data);
     } catch (error) {
-      res.json(error)
+      res.json(error);
     }
   },
-}
+};
