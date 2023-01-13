@@ -15,6 +15,11 @@ const productSchema = mongoose.Schema({
     required: true,
     ref: 'Subcategories',
   },  //тип продукта
+  category: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'Subcategories',
+  },
   photo: [{ type: String }], //фотографии не менее трех
   dimensions: [{ type: String }], //размеры
   description: { type: String }, //описание

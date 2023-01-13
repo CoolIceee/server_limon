@@ -46,7 +46,7 @@ module.exports.userController = {
       }
 
       const token = await jwt.sign(payload, config.get('SecretKay'), {
-        expiresIn: '1h',
+        expiresIn: '24h',
       })
 
       res.json({ token })
@@ -80,7 +80,7 @@ module.exports.userController = {
       }
 
       const token = await jwt.sign(payload, config.get('SecretKay'), {
-        expiresIn: '1h',
+        expiresIn: '24h',
       })
 
       return res.json({ token })

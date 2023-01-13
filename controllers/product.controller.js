@@ -1,14 +1,14 @@
-const Product = require('../models/Product.model')
+const Product = require("../models/Product.model");
 module.exports.productController = {
   addProduct: async (req, res) => {
     try {
       const {
         name,
         itemName,
-        // brand,
         people,
         gender,
         typeProduct,
+        category,
         subcategories,
         photo,
         dimensions,
@@ -20,10 +20,10 @@ module.exports.productController = {
       await Product.create({
         name,
         itemName,
-        // brand,
         people,
         gender,
         typeProduct,
+        category,
         subcategories,
         photo,
         dimensions,
@@ -58,9 +58,41 @@ module.exports.productController = {
   getOneSubcategoryProduct: async (req, res) => {
     try {
       const data = await Product.find({
+        category: req.params.id,
+      });
+      res.json(data);
+    } catch (error) {
+      res.json(error);
+    }
+  },
+  getOneSubcategoryCategoryProduct: async (req, res) => {
+    try {
+      const data = await Product.find({
         typeProduct: req.params.id,
       });
       res.json(data);
+    } catch (error) {
+      res.json(error);
+    }
+  },
+  addProductBasket: async (req, res) => {
+    try {
+      await Product.findByIdAndUpdate(req.params.id, {
+        $push: { people: req.user.id },
+      });
+      const data = await Product.findById(req.params.id);
+      res.json(data);
+    } catch (error) {
+      res.json(error);
+    }
+  },
+  deleteProductBasket: async (req, res) => {
+    try {
+      await Product.findByIdAndUpdate(req.params.id, {
+        $pull: { people: req.user.id },
+      });
+
+      res.json("удалено");
     } catch (error) {
       res.json(error);
     }
