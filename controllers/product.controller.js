@@ -1,4 +1,5 @@
 const Product = require("../models/Product.model");
+const Users = require("../models/Users.model");
 module.exports.productController = {
   addProduct: async (req, res) => {
     try {
@@ -77,8 +78,8 @@ module.exports.productController = {
   },
   addProductBasket: async (req, res) => {
     try {
-      await Product.findByIdAndUpdate(req.params.id, {
-        $push: { people: req.user.id },
+      await Users.findByIdAndUpdate(req.user.id, {
+        $push: { basket: req.params.id },
       });
       const data = await Product.findById(req.params.id);
       res.json(data);
@@ -88,8 +89,8 @@ module.exports.productController = {
   },
   deleteProductBasket: async (req, res) => {
     try {
-      await Product.findByIdAndUpdate(req.params.id, {
-        $pull: { people: req.user.id },
+      await Product.findByIdAndUpdate(req.user.id, {
+        $pull: { people: req.params.id },
       });
 
       res.json("удалено");
