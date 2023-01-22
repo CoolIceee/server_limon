@@ -15,7 +15,7 @@ module.exports.basketController = {
     try {
      const data =  await Basket.find({
         user: req.user.id,
-      });
+      }).populate("product")
 
       res.json(data);
     } catch (error) {

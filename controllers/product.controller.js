@@ -41,7 +41,10 @@ module.exports.productController = {
   getProduct: async (_, res) => {
     try {
       const data = await Product.find().populate("typeProduct");
-      res.json(data);
+      const sortProduct = data.sort(() => {
+        return Math.random() - 0.5;
+      });
+      res.json(sortProduct);
     } catch (error) {
       res.json(error);
     }
@@ -78,10 +81,11 @@ module.exports.productController = {
   },
   addProductBasket: async (req, res) => {
     try {
-      await Users.findByIdAndUpdate(req.user.id, {
-        $push: { basket: req.params.id },
+      await Product.findByIdAndUpdate(req.params.id, {
+        $push: { people: req.user.id },
       });
-      const data = await Product.findById(req.params.id);
+      const data = await Product.find();
+
       res.json(data);
     } catch (error) {
       res.json(error);

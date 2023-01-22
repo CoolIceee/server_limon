@@ -102,7 +102,7 @@ module.exports.userController = {
   },
   getMyData: async (req, res) => {
     try {
-      const data = await Users.findById(req.user.id)
+      const data = await Users.findById(req.user.id);
       res.json([data]);
     } catch {
       res
