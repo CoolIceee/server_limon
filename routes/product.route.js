@@ -14,11 +14,11 @@ router.get(
   "/get/subcategory/category/product/:id",
   productController.getOneSubcategoryCategoryProduct
 );
-router.post(
-  "/add/user/:id",
-  authMiddleware,
-  productController.addProductBasket
-);
+// router.post(
+//   "/add/user/:id",
+//   authMiddleware,
+//   productController.addProductBasket
+// );
 router.delete(
   "/delete/user/:id",
   authMiddleware,

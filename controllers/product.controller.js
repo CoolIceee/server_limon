@@ -79,18 +79,7 @@ module.exports.productController = {
       res.json(error);
     }
   },
-  addProductBasket: async (req, res) => {
-    try {
-      await Product.findByIdAndUpdate(req.params.id, {
-        $push: { people: req.user.id },
-      });
-      const data = await Product.find();
-
-      res.json(data);
-    } catch (error) {
-      res.json(error);
-    }
-  },
+ 
   deleteProductBasket: async (req, res) => {
     try {
       await Product.findByIdAndUpdate(req.user.id, {
