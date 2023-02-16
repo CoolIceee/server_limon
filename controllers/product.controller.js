@@ -6,6 +6,7 @@ module.exports.productController = {
       const {
         name,
         itemName,
+        brand,
         people,
         gender,
         typeProduct,
@@ -21,6 +22,7 @@ module.exports.productController = {
       await Product.create({
         name,
         itemName,
+        brand,
         people,
         gender,
         typeProduct,
@@ -79,7 +81,7 @@ module.exports.productController = {
       res.json(error);
     }
   },
- 
+
   deleteProductBasket: async (req, res) => {
     try {
       await Product.findByIdAndUpdate(req.user.id, {

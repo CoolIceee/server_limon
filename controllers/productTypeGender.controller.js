@@ -1,7 +1,7 @@
-const ProductCategory = require("../models/ProductСategories.model");
-const Subcategories = require("../models/Subcategories.model");
+const ProductCategory = require("../models/ProductTypeGender.model");
+const Subcategories = require("../models/GenderCommodity.model");
 
-module.exports.productСategoriesController = {
+module.exports.productTypeGenderController = {
   addProductCategory: async (req, res) => {
     try {
       const { name, subcategory } = req.body;

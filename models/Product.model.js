@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 
 const productSchema = mongoose.Schema({
-  name: { type: String, required: true }, //бренд товара
-  itemName: {type: String, required: true}, //название товара
-  // brand: { type: mongoose.Schema.Types.ObjectId, required: true }, //ад бренда товара
+  name: { type: String, required: true }, //название товара
+  itemName: {type: String, required: true}, //тип товара
+  brand: { type: mongoose.Schema.Types.ObjectId, required: true }, //id бренда товара
   people: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Users' }], //люди закинувшие товар в корзину
   gender: {
     type: mongoose.Schema.Types.ObjectId,

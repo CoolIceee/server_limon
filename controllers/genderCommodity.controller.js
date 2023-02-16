@@ -1,9 +1,9 @@
-const Subcategories = require("../models/Subcategories.model");
-const Category = require("../models/Category.model");
-module.exports.subcategoriesController = {
+const Subcategories = require("../models/GenderCommodity.model");
+const Category = require("../models/Gender.model");
+module.exports.genderCommodityController = {
   addSubcategories: async (req, res) => {
     try {
-      const { name, genderСategories,  } = req.body;
+      const { name, genderСategories } = req.body;
       Subcategories.create({
         name,
         genderСategories,
