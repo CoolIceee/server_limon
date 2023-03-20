@@ -1,5 +1,4 @@
 const Product = require("../models/Product.model");
-const Users = require("../models/Users.model");
 module.exports.productController = {
   addProduct: async (req, res) => {
     try {
@@ -9,7 +8,7 @@ module.exports.productController = {
         brand,
         people,
         gender,
-        typeProduct,
+        GenderCommodity,
         category,
         subcategories,
         photo,
@@ -25,7 +24,7 @@ module.exports.productController = {
         brand,
         people,
         gender,
-        typeProduct,
+        GenderCommodity,
         category,
         subcategories,
         photo,
@@ -42,7 +41,7 @@ module.exports.productController = {
   },
   getProduct: async (_, res) => {
     try {
-      const data = await Product.find().populate("typeProduct");
+      const data = await Product.find().populate("GenderCommodity");
       const sortProduct = data.sort(() => {
         return Math.random() - 0.5;
       });

@@ -7,12 +7,9 @@ module.exports.genderCommodityController = {
       Subcategories.create({
         name,
         genderСategories,
-        subcategoryProduct,
-        // category,
-        // floorCategory,
       });
       res.json("Подкатегория добавлена");
-    } catch {
+    } catch (e) {
       res.json(e);
     }
   },
@@ -20,7 +17,7 @@ module.exports.genderCommodityController = {
     try {
       const data = await Subcategories.find({
         genderСategories: req.params.id,
-      }).populate("subcategoryProduct");
+      })
       res.json(data);
     } catch (e) {
       res.json(e);

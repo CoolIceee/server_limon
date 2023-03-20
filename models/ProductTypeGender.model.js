@@ -9,4 +9,5 @@ const ProductTypeGender = mongoose.model(
   "ProductTypeGender",
   ProductTypeGenderSchema
 );
+
 module.exports = ProductTypeGender;
